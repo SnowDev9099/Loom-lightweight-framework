@@ -52,7 +52,7 @@ Example:
 result = add(placeholder(), 5)
 
 
-6. Logging
+### 6. Logging
 Print messages of different types (log, warning, or error) for debugging purposes, aiding in code troubleshooting and development.
 
 Example:
