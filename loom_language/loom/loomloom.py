@@ -9,24 +9,22 @@ class LoomInterpreter:
     def interpret(self, code):
         lines = code.split('\n')
         for line in lines:
-            if line.startswith('function'):
+            if line.strip().startswith('function'):
                 self.define_function(line)
             elif '=' in line:
                 self.assign_variable(line)
-            elif line.startswith('loop'):
+            elif line.strip().startswith('loop'):
                 self.execute_loop(line)
             elif 'placeholder' in line:
                 self.handle_placeholder(line)
-            elif line.startswith('require.dependency'):
+            elif line.strip().startswith('require.dependency'):
                 self.load_dependency(line)
-            elif line.startswith('debug.system.log'):
+            elif line.strip().startswith('debug.system.log'):
                 self.log_message(line)
             elif line.strip().startswith('#') or line.strip() == '':
-                # Skip comments and empty lines
                 continue
             else:
-                # If the line is not recognized, assume it's a script file name
-                self.run_script(line.strip())
+                print(f"Error: Unrecognized command: {line}")
 
     def define_function(self, line):
         parts = line.split('(')
@@ -85,10 +83,7 @@ class LoomInterpreter:
         print(message)
 
     def run_script(self, file_name):
-        # Get the path to the "Scripts" directory
         script_dir = os.path.join(os.path.dirname(__file__), 'Scripts')
-        
-        # Combine the directory path with the file name
         script_path = os.path.join(script_dir, file_name)
         
         if os.path.exists(script_path):
@@ -101,6 +96,9 @@ class LoomInterpreter:
 
 # Example Loom code
 loom_code = """
+
+debug.system.log("Inside factorial function")
+
 # Your Loom code here
 """
 
