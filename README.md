@@ -5,7 +5,7 @@ Welcome to Loom, a lightweight and intuitive programming language designed for s
 ### Features Overview
 Let's dive into the key features of the Loom language:
 
-### Arithmetic Operations
+## Arithmetic Operations
 
 Loom supports standard arithmetic operations, allowing you to perform calculations effortlessly.
 
@@ -16,7 +16,7 @@ result = 10 - 2
 result = 6 * 4
 result = 20 / 5
 
-### Function Definitions
+## Function Definitions
 
 Define custom functions to encapsulate reusable blocks of code, enhancing code organization and modularity.
 
@@ -26,7 +26,7 @@ function add(a, b) = (
     return a + b
 )
 
-### Loops
+## Loops
 
 Execute code blocks repeatedly using loop constructs, facilitating iterative processes and tasks.
 
@@ -37,7 +37,7 @@ loop(5) (
     debug.system.log("Loop iteration")
 )
 
-### Placeholders
+## Placeholders
 
 Dynamically substitute values into expressions with placeholders, offering flexibility and dynamic behavior in your code.
 
@@ -45,7 +45,7 @@ Example:
 
 result = add(placeholder(), 5)
 
-### Logging
+## Logging
 
 Print messages of different types (log, warning, or error) for debugging purposes, aiding in code troubleshooting and development.
 
@@ -57,7 +57,7 @@ debug.system.log.error("This is an error message")
 
 
 
-### Getting Started
+# Getting Started
 
 Ready to start using Loom?
 
@@ -71,14 +71,14 @@ Explore and experiment with Loom's features to build amazing projects!
 Conclusion
 Loom provides a simple yet powerful programming environment suitable for various tasks, from scripting to application development. Its intuitive syntax, rich feature set, and ease of use make it an excellent choice for developers looking to write clean, expressive, and efficient code. Get started with Loom today and unlock your programming potential!
 
-### Running the code!
+# Running the code!
 make sure the file has the .loom file extension
 
 and save the code.
 
 then in your, terminal, idle or any other python code runner type the following  python loomloom.py this runs the libary but to run scripts you need to do python loomloom.py ReplaceThisWithYourScriptName.loom
 
-### Alternative way of writing code!
+# Alternative way of writing code!
 
 Ready to start using Loom? Follow these steps:
 
