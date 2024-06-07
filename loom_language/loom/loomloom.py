@@ -9,24 +9,28 @@ class LoomInterpreter:
     def interpret(self, code):
         lines = code.split('\n')
         for line in lines:
-            if line.startswith('function'):
+            if line.strip().startswith('function'):
                 self.define_function(line)
             elif '=' in line:
                 self.assign_variable(line)
-            elif line.startswith('loop'):
+            elif line.strip().startswith('loop'):
                 self.execute_loop(line)
             elif 'placeholder' in line:
                 self.handle_placeholder(line)
-            elif line.startswith('require.dependency'):
+            elif line.strip().startswith('require.dependency'):
                 self.load_dependency(line)
-            elif line.startswith('debug.system.log'):
+            elif line.strip().startswith('debug.system.log'):
                 self.log_message(line)
+            elif line.strip().startswith('if'):
+                self.evaluate_if_statement(line)
+            elif line.strip().startswith('else'):
+                self.evaluate_else_statement()
+            elif line.strip().startswith('end'):
+                continue
             elif line.strip().startswith('#') or line.strip() == '':
-                # Skip comments and empty lines
                 continue
             else:
-                # If the line is not recognized, assume it's a script file name
-                self.run_script(line.strip())
+                print(f"Error: Unrecognized command: {line}")
 
     def define_function(self, line):
         parts = line.split('(')
@@ -82,13 +86,33 @@ class LoomInterpreter:
 
     def log_message(self, line):
         message = line.split('(')[1].split(')')[0].strip()
-        print(message)
+        print(f"<log type of:({line.split('.')[1].split('(')[0]})> {message}")
+
+    def evaluate_if_statement(self, line):
+        condition = line.split('if ')[1].strip()
+        if self.evaluate_expression(condition):
+            pass  # Condition is true, continue execution
+        else:
+            # Find the corresponding 'else' or 'end' line
+            lines = code.split('\n')
+            index = lines.index(line)
+            else_index = None
+            for i in range(index + 1, len(lines)):
+                if lines[i].strip().startswith('else'):
+                    else_index = i
+                    break
+                elif lines[i].strip().startswith('end'):
+                    break
+            if else_index is not None:
+                # Jump to the 'else' statement
+                self.interpret(lines[else_index])
+
+    def evaluate_else_statement(self):
+        # Do nothing, skip execution of the else block
+        pass
 
     def run_script(self, file_name):
-        # Get the path to the "Scripts" directory
         script_dir = os.path.join(os.path.dirname(__file__), 'Scripts')
-        
-        # Combine the directory path with the file name
         script_path = os.path.join(script_dir, file_name)
         
         if os.path.exists(script_path):
@@ -101,7 +125,9 @@ class LoomInterpreter:
 
 # Example Loom code
 loom_code = """
-# Your Loom code here
+
+debug.system.log("Starting Loom code execution")
+
 """
 
 # Create and run the interpreter
