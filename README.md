@@ -1,4 +1,4 @@
-### Loom Language
+## Loom Language
 ### Introduction
 Welcome to Loom, a lightweight and intuitive programming language designed for simplicity and versatility. Loom offers a rich set of features to support various programming tasks, from basic arithmetic operations to advanced functionalities like function definitions and logging. This comprehensive documentation will guide you through the language syntax and its capabilities.
 
